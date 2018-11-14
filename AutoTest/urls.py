@@ -19,4 +19,5 @@ from AutoTest import viewIndex
 
 urlpatterns = [
     url(r"^$", viewIndex.index),
+    url(r"^testDO", viewIndex.testDO),
 ]
