@@ -1,19 +1,20 @@
-layui.use(['element','jquery','layer'], function() {
+layui.use(['element', 'jquery', 'layer'], function () {
     var element = layui.element;
-    var layer = layui.layer
-    var $ = layui.jquery
+    var layer = layui.layer;
+    var $ = layui.jquery;
+    var sideDisplay = "0"
 
-    var editor = ace.edit('editor',{
-        theme: "ace/theme/dracula",
-        mode: "ace/mode/python",
-        autoScrollEditorIntoView: true,
-        maxLines: 30,
-        minLines: 30
+    $("#test").on("mousedown", function (event) {
+        layer.alert(event.button);
     });
 
-    $("#test").on("click",function(){
-//        $(".layui-header").hidden();
-    });
+    // var editor = ace.edit('editor', {
+    //     theme: "ace/theme/dracula",
+    //     mode: "ace/mode/python",
+    //     autoScrollEditorIntoView: true,
+    //     maxLines: 30,
+    //     minLines: 30
+    // });
 
 //    $("#test").on("click",function() {
 //        $.ajax({

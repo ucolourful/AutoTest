@@ -5,112 +5,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>AutoTest</title>
-    <link href="../static/src/css/layui.css" rel="stylesheet">
-    <link href="../static/src/css/main.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/tree.css"/>
 </head>
-<body>
-<div class="layui-layout layui-layout-admin">
-    <!-- 导航栏 -->
-    <div class="layui-header">
-        <div class="layui-logo">AutoTest - 首页</div>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">产品线</li>
-            <li class="layui-nav-item"><a href="#">admin</a></li>
-        </ul>
-    </div>
-    <div class="layui-side layui-bg-cyan">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
+<body  oncontextmenu="return false;">
+
+<!-- 左侧导航开关 -->
+<input type="checkbox" id="menu"/>
+<label for="menu" class="menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+
+<!-- 测试用例导航 -->
+<div class="nav">
+    <!-- 预留顶部导航的高度 -->
+    <div class="nav-hidden"></div>
+
+    <!-- 测试用例树状图 -->
+    <div class="nav-scroll">
+        <div class="tree">
+            <ul>
+                <!--一级菜单栏-->
+                <li>
+                    <div class="close_menu"><span></span><a title="一级菜单">一级菜单</a></div>
+                    <ul>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li><a title="最后一层" id="test">最后一层</a></li>
+                                <li><a title="最后一层" class="ontree">最后一层</a></li>
+                                <li><a title="最后一层">最后一层</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
+                <!--一级菜单栏end-->
+                <!--一级菜单栏-->
+                <li>
+                    <div class="close_menu"><span></span><a title="一级菜单">一级菜单</a></div>
+                    <ul>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-                class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-                class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-                class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
+                <!--一级菜单栏end-->
             </ul>
         </div>
     </div>
-    <div class="layui-body">
-        <div id="editor"></div>
-        <button id="">liming</button>
-    </div>
 </div>
-<script src="../static/src/ace.js" type="text/javascript"></script>
-<script src="../static/src/layui.js" type="text/javascript"></script>
-<script src="../static/js/atIndex.js" type="text/javascript"></script>
+
+
+<main>
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="header-hidden"></div>
+        <div>
+        </div>
+    </header>
+
+    <!-- 内容 -->
+    <div class="container">
+        <p>
+            第一个阶段，是做出要求，对宇宙发出指令，让宇宙了解你想要些什么，宇宙就会自动回应你的想法。让宇宙了解你想要些什么，宇宙就会自动回应你的想法。让宇宙了解你想要些什么，宇宙就会自动回应你的想法。让宇宙了解你想要些什么，宇宙就会自动回应你的想法。让宇宙了解你想要些什么，宇宙就会自动回应你的想法。
+            让宇宙了解你想要些什么，宇宙就会自动回应你的想法。</p>
+
+        <p>这是一个很有意思的过程，就好比把宇宙当成一本货物的目录，你翻着它，然后决定“我要经历这个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你要相信你已经拥有它了。要有一种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+    </div>
+</main>
 </body>
+<script src="../static/src/layui.js"></script>
+<script src="../static/js/atIndex.js"></script>
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/treescroll.min.js"></script>
 </html>

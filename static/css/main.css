@@ -1,8 +1,167 @@
-#editor {
+html {
+    box-sizing: border-box;
     margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    height: 100%;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'STHeiti', 'WenQuanYi Micro Hei', 'SimSun', sans-serif;
+    font-size: 16px;
+    font-smooth: auto;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #444;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 250ms ease;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.menu span {
+    position: relative;
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: #444;
+    float: left;
+    transform-origin: center center;
+    transition: transform 250ms ease;
+    z-index: 200;
+}
+
+.menu span:nth-of-type(1) {
+    transform: translateY(-5px);
+}
+
+.menu span:nth-of-type(3) {
+    transform: translateY(5px);
+}
+
+#menu {
+    display: none;
+}
+
+#menu:checked ~ .menu {
+    background-color: transparent;
+    transform: rotate(360deg);
+    transition: transform 250ms ease;
+}
+
+#menu:checked ~ .menu span {
+    background-color: white;
+    transition: transform 250ms ease;
+}
+
+#menu:checked ~ .menu span:nth-of-type(1) {
+    transform: translateY(1px) rotate(45deg);
+}
+
+#menu:checked ~ .menu span:nth-of-type(2) {
+    display: none;
+}
+
+#menu:checked ~ .menu span:nth-of-type(3) {
+    transform: translateY(-1px) rotate(-45deg);
+}
+
+#menu:checked ~ .nav {
     left: 0;
-    right: 0;
+    transition: left 500ms ease;
+}
+
+#menu:checked ~ main {
+    transform: translateX(300px);
+    transition: transform 500ms ease;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: -210px;
+    width: 1000px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+    transition: left 500ms ease;
+    z-index: 0;
+    white-space: nowrap;
+    overflow-y: scroll;
+}
+
+.nav-hidden {
+    position: relative;
+    height: 80px;
+    width: 100%;
+}
+
+.nav-scroll {
+    position: relative;
+    width: 270px;
+    height: 100%;
+    overflow-y: hidden;
+    display: inline-block;
+}
+
+.container {
+    width: 100%;
+    padding: 20px 5% 20px 5%;
+    position: relative;
+    display: block;
+    margin: 0;
+    height: 100%;
+    background-color: white;
+    z-index: 100;
+}
+
+main {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: translateX(0px);
+    transition: transform 500ms ease;
+    z-index: 0;
+    overflow: hidden;
+}
+
+main header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: whitesmoke;
+}
+
+.header-hidden {
+    width: 80px;
 }
