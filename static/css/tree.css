@@ -22,7 +22,7 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 	height: 24px;
 	line-height: 24px;
 	font-size: 14px;
-	overflow: hidden;
+	overflow: scroll;
 }
 .tree a:hover{
 	color: #18C0DF;
