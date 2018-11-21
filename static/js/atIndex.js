@@ -5,21 +5,21 @@ layui.use(['jquery', 'layer'], function () {
 
     // 监听 顶部右方导航按钮事件
     $(".header-right").on("click", function(event) {
-        menuClose();
+        topMenuClose();
         if ( $("#"+ this.id +" .header-more").css("border-top-style") != "none" ) {
-            menuOpen(this.id);
+            topMenuOpen(this.id);
             return false;
-        }
+        };
         menuClose();
     });
 
     // 关闭menu
     $(document).on("click", function(event){
-        menuClose();
+        topMenuClose();
         return false;
     });
 
-    function menuOpen(id) {
+    function topMenuOpen(id) {
         $("#" + id + " .header-more").css("margin-top","-3px");
         $("#" + id + " .header-more").css("border-top-style","none");
         $("#" + id + " .header-more").css("border-bottom-style","solid");
@@ -30,7 +30,7 @@ layui.use(['jquery', 'layer'], function () {
         $("#" + id).css("color","white");
     };
 
-    function menuClose() {
+    function topMenuClose() {
         $(".header-more").css("margin-top","-3px");
         $(".header-more").css("border-top-style","solid");
         $(".header-more").css("border-bottom-style","none");
