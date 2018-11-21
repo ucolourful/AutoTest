@@ -1,0 +1,27 @@
+html {
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'STHeiti', 'WenQuanYi Micro Hei', 'SimSun', sans-serif;
+    font-size: 16px;
+    font-smooth: auto;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #444;
+    height: 100%;
+    overflow-x: hidden;
+}
