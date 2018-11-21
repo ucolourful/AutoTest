@@ -5,196 +5,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>AutoTest</title>
+    <link href="../static/css/common.css" rel="stylesheet">
+    <link href="../static/css/header.css" rel="stylesheet"/>
     <link href="../static/css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/tree.css"/>
+    <link href="../static/css/tree.css" rel="stylesheet"/>
 </head>
 <body oncontextmenu="return false;">
 
-<!-- 侧边导航开关 -->
-<input type="checkbox" id="menu"/>
-<label for="menu" class="menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</label>
-
-<main>
-    <!-- 顶部导航栏 -->
-    <header>
-        <div class="header-container">
-            <div class="header-logo">
-                <a href="#">AutoTest测试平台</a>
-            </div>
-            <div class="header-help">
-                <a href="#">帮助</a>
-            </div>
-            <div class="header-right" id="header-right-user">
-                <a>李明
-                    <span class="header-more"></span>
-                </a>
-                <ul class="menu-more">
-                    <li><a href="#">系统设置</a></li>
-                    <li><a href="#">退出登录</a></li>
-                </ul>
-            </div>
-            <div class="header-right" id="header-right-tmode">
-                <a href="#">模式：Web测试
-                    <span class="header-more"></span>
-                </a>
-                <ul class="menu-more">
-                    <li><a href="#">压力测试</a></li>
-                    <li><a href="#">性能测试</a></li>
-                </ul>
-            </div>
-            <div class="header-right" id="header-right-version">
-                <a href="#">版本：测试版本1
-                    <span class="header-more"></span>
-                </a>
-                <ul class="menu-more">
-                    <li><a href="#">测试版本2</a></li>
-                    <li><a href="#">开发版本3</a></li>
-                </ul>
-            </div>
+<!-- 顶部导航栏 -->
+<div class="header-class">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="#">AutoTest测试平台</a>
         </div>
-    </header>
-    <!-- 侧边导航栏 -->
-    <div class="nav">
-        <div class="side-scroll">
-            <div class="tree">
-                <ul>
-                    <!--一级菜单栏-->
-                    <li>
-                        <div class="close_menu"><span></span><a title="一级菜单">一级菜单</a></div>
-                        <ul>
-                            <li>
-                                <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                                <ul>
-                                    <li><a title="最后一层" id="test">最后一层</a></li>
-                                    <li><a title="最后一层" class="ontree">最后一层</a></li>
-                                    <li><a title="最后一层">最后一层</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                                <ul>
-                                    <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单栏end-->
-                    <!--一级菜单栏-->
-                    <li>
-                        <div class="open_menu"><span></span><a title="一级菜单">一级菜单</a></div>
-                        <ul>
-                            <li>
-                                <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                                <ul>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="open_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                                <ul>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="open_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                        <ul>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                            <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单栏end-->
-                </ul>
-            </div>
+        <div class="header-help">
+            <a href="#">帮助</a>
+        </div>
+        <div class="header-right" id="header-right-user">
+            <a>李明
+                <span class="header-more"></span>
+            </a>
+            <ul class="menu-more">
+                <li><a href="#">系统设置</a></li>
+                <li><a href="#">退出登录</a></li>
+            </ul>
+        </div>
+        <div class="header-right" id="header-right-tmode">
+            <a href="#">模式：Web测试
+                <span class="header-more"></span>
+            </a>
+            <ul class="menu-more">
+                <li><a href="#">压力测试</a></li>
+                <li><a href="#">性能测试</a></li>
+            </ul>
+        </div>
+        <div class="header-right" id="header-right-version">
+            <a href="#">版本：测试版本1
+                <span class="header-more"></span>
+            </a>
+            <ul class="menu-more">
+                <li><a href="#">测试版本2</a></li>
+                <li><a href="#">开发版本3</a></li>
+            </ul>
         </div>
     </div>
+</div>
+
+<div class="main-class">
+    <!-- 侧边导航栏 -->
+    <div class="side-menu">
+        <div class="tree">
+            <ul>
+                <!--一级菜单栏-->
+                <li>
+                    <div class="close_menu"><span></span><a title="一级菜单">一级菜单</a></div>
+                    <ul>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li><a title="最后一层" id="test">最后一层</a></li>
+                                <li><a title="最后一层" class="ontree">最后一层</a></li>
+                                <li><a title="最后一层">最后一层</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化</a></li>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!--一级菜单栏end-->
+                <!--一级菜单栏-->
+                <li>
+                    <div class="open_menu"><span></span><a title="一级菜单">一级菜单</a></div>
+                    <ul>
+                        <li>
+                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="open_menu"><span></span><a title="二级菜单">二级菜单</a></div>
+                            <ul>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="open_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <ul>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!--一级菜单栏end-->
+            </ul>
+        </div>
+    </div>
+
     <!-- 内容 -->
     <div class="container">
+
+        <p>第一个阶段，是</p>
+
+        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+        <p>第一个阶段，是</p>
+<p>第一个阶段，是</p>
+
+        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+        <p>第一个阶段，是</p>
+
+
+        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+        <p>第一个阶段，是</p>
+
+        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+        <p>第一个阶段，是</p>
+
+        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
+
+        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
         <p>第一个阶段，是</p>
 
         <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
 
         <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
     </div>
-</main>
+
+</div>
 </body>
 <script src="../static/src/layui.js"></script>
 <script src="../static/js/atIndex.js"></script>
