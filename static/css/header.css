@@ -5,8 +5,8 @@
     height: 60px;
     background-color: #2f2f2f;
     padding: 0 0 0 10px;
-    border-bottom: 1px solid yellow;
-    z-index: 600;
+    border-bottom: 3px solid #E9967A;
+    z-index: 999;
 }
 
 .header-container {
@@ -38,7 +38,7 @@
 .header-right {
     position: relative;
     float: right;
-    padding:0 20px 0 20px;
+    padding:0 20px 0 10px;
     height: 100%;
     width: auto;
     line-height: 100%;
@@ -112,11 +112,20 @@
 }
 
 .header-right .menu-more li {
-    background-color: white;
-    color: #2f2f2f;
     padding: 0 20px;
     text-align: center;
 }
+
+.select {
+    background-color: white;
+    color: #2f2f2f;
+}
+
+.selected {
+    color: white;
+    background-color: grey;
+}
+
 
 .header-right .menu-more li a {
     color: inherit;
@@ -127,3 +136,4 @@
     color: white;
     background-color: #5FB878;
 }
+
