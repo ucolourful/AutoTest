@@ -3,14 +3,57 @@ layui.use(['jquery', 'layer'], function () {
     var $ = layui.jquery;
     var sideDisplay = "0"
 
+    ace.require("ace/ext/language_tools");
+    var editor = ace.edit('editorpre');
+    editor.session.setMode("ace/mode/python");
+    editor.setTheme("ace/theme/tomorrow");
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: false
+    });
+
     // 监听 顶部右方导航按钮事件
     $(".header-right").on("click", function(event) {
         topMenuClose();
         if ( $("#"+ this.id +" .header-more").css("border-top-style") != "none" ) {
             topMenuOpen(this.id);
             return false;
+        } else {
+            topMenuClose();
+            return false;
         };
-        menuClose();
+
+    });
+
+    // 监听 顶部导航menu按钮
+    $(".header-right .menu-more li").on("click", function(event) {
+        topMenuClose();
+
+        // 切换"版本" or 切换"模式"
+        if ( this.parentNode.parentNode.id === "header-right-version" ) {
+            var title = "版本："
+            layer.msg("switch version");
+        } else if ( this.parentNode.parentNode.id === "header-right-tmode" ) {
+            var title = "模式："
+            layer.msg("switch mode");
+        } else {
+            layer.msg("user operation");
+            return false;
+        };
+
+        // 设置header显示
+        this.parentNode.parentNode.firstChild.nextSibling.innerText = title + this.id;
+
+        // 设置下拉框的选中属性
+        var node = this.parentNode.firstChild;
+        for ( ; node; node = node.nextSibling ) {
+            if ( node.nodeType === 1 ) {
+                node.className = "select";
+            };
+        };
+        this.className = "selected";
+        return false;
     });
 
     // 关闭menu
@@ -44,14 +87,6 @@ layui.use(['jquery', 'layer'], function () {
 //    $("#test").on("mousedown", function (event) {
 //        layer.alert(event.button);
 //    });
-
-    // var editor = ace.edit('editor', {
-    //     theme: "ace/theme/dracula",
-    //     mode: "ace/mode/python",
-    //     autoScrollEditorIntoView: true,
-    //     maxLines: 30,
-    //     minLines: 30
-    // });
 
 //    $("#test").on("click",function() {
 //        $.ajax({
