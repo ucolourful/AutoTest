@@ -22,30 +22,29 @@
             <a href="#">帮助</a>
         </div>
         <div class="header-right" id="header-right-user">
-            <a>李明
-                <span class="header-more"></span>
-            </a>
+            <a>李明</a>
+            <span class="header-more"></span>
             <ul class="menu-more">
-                <li><a href="#">系统设置</a></li>
-                <li><a href="#">退出登录</a></li>
+                <li class="select"><a href="#">系统设置</a></li>
+                <li class="select"><a href="#">退出登录</a></li>
             </ul>
         </div>
         <div class="header-right" id="header-right-tmode">
-            <a href="#">模式：Web测试
-                <span class="header-more"></span>
-            </a>
+            <a href="#">模式：用例设计</a>
+            <span class="header-more"></span>
             <ul class="menu-more">
-                <li><a href="#">压力测试</a></li>
-                <li><a href="#">性能测试</a></li>
+                <li class="selected" id="用例设计"><a href="#">用例设计</a></li>
+                <li class="select" id="自动化案例编写"><a href="#">自动化案例编写</a></li>
+                <li class="select" id="自动化构建"><a href="#">自动化构建</a></li>
             </ul>
         </div>
         <div class="header-right" id="header-right-version">
-            <a href="#">版本：测试版本1
-                <span class="header-more"></span>
-            </a>
+            <a href="#">版本：测试版本1</a>
+            <span class="header-more"></span>
             <ul class="menu-more">
-                <li><a href="#">测试版本2</a></li>
-                <li><a href="#">开发版本3</a></li>
+                <li class="selected" id="测试版本1"><a href="#">测试版本1</a></li>
+                <li class="select" id="测试版本2"><a href="#">测试版本2</a></li>
+                <li class="select" id="测试版本3"><a href="#">开发版本3</a></li>
             </ul>
         </div>
     </div>
@@ -124,7 +123,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="open_menu"><span></span><a title="三级菜单">三级菜单</a></div>
+                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
                                     <ul>
                                         <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
                                         <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
@@ -181,44 +180,50 @@
     </div>
 
     <!-- 内容 -->
-    <div class="container">
+    <div class="main-container">
+        <!-- 工具栏 -->
+        <div class="container-toolbar">
+        </div>
 
-        <p>第一个阶段，是</p>
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
-        <p>第一个阶段，是</p>
-<p>第一个阶段，是</p>
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
-        <p>第一个阶段，是</p>
-
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
-        <p>第一个阶段，是</p>
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
-        <p>第一个阶段，是</p>
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
-        <p>第一个阶段，是</p>
-
-        <p>这是一个很个，我要那种东西，我要跟那种人一起生活”，你就是那个跟宇宙下订单的人。其实就是这样简单。</p>
-
-        <p>第二步是信念。你种毫不动摇的信念，就是我的说法，要相信还没有实现的事，“你的愿望就是我的命令”，宇宙就会开始运作安排，从而满足你心中的愿望。</p>
+        <!-- 用例内容 -->
+        <div class="container-content">
+            <div class="content-detail">
+                <div class="casedetail">
+                    <div class="detailheader">前置条件</div>
+                    <div class="detailpre">
+                        <pre id="editorpre"></pre>
+                    </div>
+                </div>
+                <div class="casedetail">
+                    <div class="detailheader">测试步骤</div>
+                </div>
+                <div class="casedetail">
+                    <div class="detailheader">期望结果</div>
+                </div>
+                <div class="casedetail">
+                    <div class="detailheader">实际结果</div>
+                </div>
+                <div class="isauto">
+                    <div class="detailheader">是否自动化</div>
+                </div>
+            </div>
+            <div class="content-desc">
+                <div class="casedesc">
+                    <div class="descheader">用例备注</div>
+                </div>
+                <div class="casedesc">
+                    <div class="descheader">测试日志</div>
+                </div>
+                <div class="bugrecord">
+                    <div class="descheader">关联问题单</div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
 </body>
+<script src="../static/src/ace.js"></script>
 <script src="../static/src/layui.js"></script>
 <script src="../static/js/atIndex.js"></script>
 <script src="../static/js/jquery.js"></script>
