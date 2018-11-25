@@ -3,15 +3,12 @@ layui.use(['jquery', 'layer'], function () {
     var $ = layui.jquery;
     var sideDisplay = "0"
 
-    ace.require("ace/ext/language_tools");
-    var editor = ace.edit('editorpre');
-    editor.session.setMode("ace/mode/python");
+	var editor = ace.edit('editorpre');
+    editor.session.setMode("ace/mode/text");
     editor.setTheme("ace/theme/tomorrow");
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: false
-    });
+    editor.setFontSize(10);
+    //editor.setReadOnly(true); 
+    editor.setOption("wrap", "free");
 
     // 监听 顶部右方导航按钮事件
     $(".header-right").on("click", function(event) {

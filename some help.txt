@@ -1,0 +1,141 @@
+ACE Editor在线代码编辑器简介及使用引导
+ACE 是一个开源的、独立的、基于浏览器的代码编辑器，可以嵌入到任何web页面或JavaScript应用程序中。ACE支持超过60种语言语法高亮，并能够处理代码多达400万行的大型文档。ACE开发团队称，ACE在性能和功能上可以媲美本地代码编辑器（如Sublime Text、TextMate和Vim等）。
+
+ACE是Mozilla Skywriter（以前称为Bespin）项目的继任者，并作为Cloud9的主要在线编辑器。
+
+以下是它的详细特性：
+
+可以对60多种语言进行语法着色(可以导入TextMate/Sublime/.tmlanguage 文件)
+20多种主题(可以导入TextMate/Sublime/.tmtheme文件)
+自动缩进，减少缩进
+一个可选的命令行
+处理巨大的文件,可以处理4,000,000行代码
+完全自定义的键绑定，包括V正则表达式搜索和替换
+高亮匹配括号
+软标签和真正的标签之间切换
+显示隐藏的字符
+用鼠标拖放文本
+换行
+代码折叠
+多个光标和选择
+实时语法检查器(支持 JavaScript/CoffeeScript/CSS/XQuery)
+剪切，复制和粘贴功能IM和Emacs模式
+项目地址：
+
+git clone git://github.com/ajaxorg/ace.git
+相关项目：
+
+GCLI
+DryIce
+Ace wrapper for ExtJS
+Ace wrapper for GWT
+使用引导：
+1、引入
+
+var ace = require("lib/ace");
+2、设置主题
+
+editor.setTheme("ace/theme/twilight");
+3、设置程序语言模式
+
+editor.getSession().setMode("ace/mode/javascript");
+4、一般常用操作
+设置、获取内容:
+
+editor.setValue("the new text here"); // or session.setValue
+editor.getValue(); // or session.getValue
+获取选择内容:
+
+editor.session.getTextRange(editor.getSelectionRange());
+在光标处插入:
+
+editor.insert("Something cool");
+获取光标所在行或列:
+
+editor.selection.getCursor();
+跳转到行:
+
+editor.gotoLine(lineNumber);
+获取总行数:
+
+editor.session.getLength();
+设置默认制表符的大小:
+
+editor.getSession().setTabSize(4);
+使用软标签:
+
+editor.getSession().setUseSoftTabs(true);
+设置字体大小，这个其实不算API:
+
+document.getElementById('editor').style.fontSize='12px';
+设置代码折叠:
+
+editor.getSession().setUseWrapMode(true);
+设置高亮:
+
+editor.setHighlightActiveLine(false);
+设置打印边距可见度:
+
+editor.setShowPrintMargin(false);
+设置编辑器只读:
+
+editor.setReadOnly(true); // false to make it editable
+5、触发尺寸缩放
+编辑器默认自适应大小，如果要程序控制resize，使用如下方法:
+
+editor.resize();
+6、搜索
+
+editor.find('needle',{
+backwards: false,
+wrap: false,
+caseSensitive: false,
+wholeWord: false,
+regExp: false
+});
+editor.findNext();
+editor.findPrevious();
+下列选项可用于您的搜索参数:
+needle: 要查找的字符串或正则表达式
+backwards: 是否反向搜索，默认为false
+wrap: 搜索到文档底部是否回到顶端，默认为false
+caseSensitive: 是否匹配大小写搜索，默认为false
+wholeWord: 是否匹配整个单词搜素，默认为false
+range: 搜索范围，要搜素整个文档则设置为空
+regExp: 搜索内容是否是正则表达式，默认为false
+start: 搜索起始位置
+skipCurrent: 是否不搜索当前行，默认为false
+替换单个字符:
+
+editor.find('foo');
+editor.replace('bar');
+替换多个字符:
+
+editor.replaceAll('bar');
+editor.replaceAll使用前需要先调用editor.find('needle', ...)
+7、事件监听
+监听改变事件:
+
+editor.getSession().on('change', function(e) {
+// e.type, etc
+});
+监听选择事件:
+
+editor.getSession().selection.on('changeSelection', function(e) {
+});
+监听光标移动:
+
+editor.getSession().selection.on('changeCursor', function(e) {
+});
+8、添加新命令、绑定按键
+要指定键绑定到一个自定义函数:
+
+editor.commands.addCommand({
+name: 'myCommand',
+bindKey: {win: 'Ctrl-M', mac: 'Command-M'},
+exec: function(editor) {
+//...
+},
+readOnly: true // 如果不需要使用只读模式，这里设置false
+});
+详细API：http://ace.c9.io/#nav=api
