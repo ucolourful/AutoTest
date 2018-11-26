@@ -148,19 +148,19 @@ layui.use(['jquery', 'layer'], function () {
         });
 
         // 设定双击监听事件，可编辑
-        editorpre.on("dblclick",function(){
+        editorpre.on("focus",function(){
             editorpre.setReadOnly(false);
         });
-        editorstep.on("dblclick",function(){
+        editorstep.on("focus",function(){
             editorstep.setReadOnly(false);
         });
-        editorexp.on("dblclick",function(){
+        editorexp.on("focus",function(){
             editorexp.setReadOnly(false);
         });
-        editorreal.on("dblclick",function(){
+        editorreal.on("focus",function(){
             editorreal.setReadOnly(false);
         });
-        editordesc.on("dblclick",function(){
+        editordesc.on("focus",function(){
             editordesc.setReadOnly(false);
         });
     };
