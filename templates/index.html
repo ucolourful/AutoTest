@@ -181,24 +181,18 @@
 
     <!-- 内容 -->
     <div class="main-container">
-        <!-- 工具栏 -->
+        <!-- 用例信息 -->
         <div class="container-toolbar">
             <div class="container-toolbar-left">
                 <div class="toolbar-left-div">Case ID: <b style="font-size: 14px;">000001</b></div>
                 <div class="toolbar-left-div">用例名称: <b style="font-size: 14px;">测试用例1</b></div>
                 <div class="toolbar-left-div">用例作者: <b style="font-size: 14px;">测试人员01</b></div>
-                <div class="toolbar-left-div">
-                    <div class="toolbar-btn-group">
-                        <button class="toolbar-btn">新增</button>
-                        <button class="toolbar-btn">保存</button>
-                        <button class="toolbar-btn">删除</button>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- 用例内容 -->
         <div class="container-content">
+            <!-- 用例详情 -->
             <div class="content-detail">
                 <div class="casedetail">
                     <div class="detailheader">前置条件</div>
@@ -228,6 +222,21 @@
                     <div class="detailheader">是否自动化</div>
                 </div>
             </div>
+
+            <!-- 用例操作 -->
+            <div class="content-toolbar">
+                <div class="container-toolbar-left">
+                    <div class="toolbar-left-div">
+                        <div class="toolbar-btn-group">
+                            <button class="toolbar-btn">保存</button>
+                            <button class="toolbar-btn">重置</button>
+                            <button class="toolbar-btn">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用例备注 -->
             <div class="content-desc">
                 <div class="casedesc">
                     <div class="descheader">用例备注</div>
@@ -244,7 +253,7 @@
                 <div class="bugrecord">
                     <div class="descheader">关联问题单</div>
                     <div class="bugnumdiv" id="bugnumdiv">
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td>bug单号</td>
                                 <td>是否强关联</td>
