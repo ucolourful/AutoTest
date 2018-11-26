@@ -2,13 +2,8 @@ layui.use(['jquery', 'layer'], function () {
     var layer = layui.layer;
     var $ = layui.jquery;
     var sideDisplay = "0"
+    initAceEditor();
 
-	var editor = ace.edit('editorpre');
-    editor.session.setMode("ace/mode/text");
-    editor.setTheme("ace/theme/tomorrow");
-    editor.setFontSize(10);
-    //editor.setReadOnly(true); 
-    editor.setOption("wrap", "free");
 
     // 监听 顶部右方导航按钮事件
     $(".header-right").on("click", function(event) {
@@ -53,6 +48,21 @@ layui.use(['jquery', 'layer'], function () {
         return false;
     });
 
+
+//    $(".detaildiv").on("dblclick", function(event){
+//        if ( editor === null ) {
+//            editor = ace.edit(this.firstChild.nextSibling.id);
+//        } else {
+//            layer.alert(editor.getValue());
+//        };
+//    });
+//    var editor = ace.edit('editorpre');
+//    editor.session.setMode("ace/mode/text");
+//    editor.setTheme("ace/theme/tomorrow");
+//    editor.setFontSize(10);
+//    editor.setOption("wrap", "free");
+//    editor.setReadOnly(true);
+
     // 关闭menu
     $(document).on("click", function(event){
         topMenuClose();
@@ -79,6 +89,80 @@ layui.use(['jquery', 'layer'], function () {
         $(".menu-more").css("background-color","rgba(0,0,0,.3)");
         $(".header-right").css("border-bottom","none");
         $(".header-right").css("color","rgba(255,255,255,.7)");
+    };
+
+    // 初始化editor,并添加监听事件
+    function initAceEditor() {
+        // 初始化editor
+        editorpre = ace.edit('editorpre');
+        editorstep = ace.edit('editorstep');
+        editorexp = ace.edit('editorexp');
+        editorreal = ace.edit('editorreal');
+        editordesc = ace.edit('editordesc');
+        editorlog = ace.edit('editorlog');
+
+        // 配置editor
+        editorpre.session.setMode("ace/mode/text");
+        editorpre.setFontSize(10);
+        editorpre.setOption("wrap", "free");
+
+        editorstep.session.setMode("ace/mode/text");
+        editorstep.setFontSize(10);
+        editorstep.setOption("wrap", "free");
+
+        editorexp.session.setMode("ace/mode/text");
+        editorexp.setFontSize(10);
+        editorexp.setOption("wrap", "free");
+
+        editorreal.session.setMode("ace/mode/text");
+        editorreal.setFontSize(10);
+        editorreal.setOption("wrap", "free");
+
+        editordesc.session.setMode("ace/mode/text");
+        editordesc.setFontSize(10);
+        editordesc.setOption("wrap", "free");
+
+        // 设定editor不可编辑
+        editorpre.setReadOnly(true);
+        editorstep.setReadOnly(true);
+        editorexp.setReadOnly(true);
+        editorreal.setReadOnly(true);
+        editordesc.setReadOnly(true);
+        editorlog.setReadOnly(true);
+
+        // 设定失去焦点监听事件，不可编辑
+        editorpre.on("blur",function() {
+            editorpre.setReadOnly(true);
+        });
+        editorstep.on("blur",function() {
+            editorstep.setReadOnly(true);
+        });
+        editorexp.on("blur",function() {
+            editorexp.setReadOnly(true);
+        });
+        editorreal.on("blur",function() {
+            editorreal.setReadOnly(true);
+        });
+        editordesc.on("blur",function() {
+            editordesc.setReadOnly(true);
+        });
+
+        // 设定双击监听事件，可编辑
+        editorpre.on("dblclick",function(){
+            editorpre.setReadOnly(false);
+        });
+        editorstep.on("dblclick",function(){
+            editorstep.setReadOnly(false);
+        });
+        editorexp.on("dblclick",function(){
+            editorexp.setReadOnly(false);
+        });
+        editorreal.on("dblclick",function(){
+            editorreal.setReadOnly(false);
+        });
+        editordesc.on("dblclick",function(){
+            editordesc.setReadOnly(false);
+        });
     };
 
 //    $("#test").on("mousedown", function (event) {
