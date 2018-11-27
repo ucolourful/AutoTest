@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from AutoTest import viewIndex
+from AutoTest import viewIndex, viewLogin
 
 urlpatterns = [
-    url(r"^$", viewIndex.index),
+    url(r"^$", viewLogin.login),
     url(r"^testDO", viewIndex.testDO),
 ]
