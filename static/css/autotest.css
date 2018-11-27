@@ -1,0 +1,360 @@
+/* 公共部分 */
+html { box-sizing: border-box; margin: 0; height: 100%; }
+*, *::after, *::before { box-sizing: inherit; }
+*, *:before, *:after { box-sizing: border-box; outline: none; }
+body { margin: 0; padding: 0; font-family: 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'STHeiti', 'WenQuanYi Micro Hei', 'SimSun', sans-serif; font-size: 16px; font-smooth: auto; font-weight: 300; line-height: 1.75; color: #444; height: 100%; overflow-x: hidden; }
+
+/* header部分 */
+.at-header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: #2f2f2f;
+    padding: 0 0 0 10px;
+    border-bottom: 3px solid #E9967A;
+}
+
+.at-header-logo {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: auto;
+    line-height: 100%;
+}
+
+.at-header-menu {
+    position: relative;
+    float: right;
+    padding:0 20px 0 10px;
+    height: 100%;
+    width: auto;
+    line-height: 100%;
+    border-right: 1px solid grey;
+    color: rgba(255,255,255,.7);
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+.at-header-menu-end {
+    position: relative;
+    float: right;
+    padding:0 10px 0 10px;
+    height: 100%;
+    width: auto;
+    line-height: 100%;
+    color: rgba(255,255,255,.7);
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+.at-header a {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    line-height: 60px;
+    font-size: 14px;
+}
+
+.at-header .at-header-logo a {
+    display: block;
+    text-decoration: none;
+    color: #009688;
+    text-align: center;
+    line-height: 60px;
+    padding-right: 5px;
+    font-size: 22px;
+}
+
+.at-header-menu-icon {
+    display: block;
+    content:'';
+    width: 0;
+    height: 0;
+    border-style: dashed;
+    border-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    margin-top: -3px;
+    border-width: 6px;
+    border-top-style: solid;
+    border-top-color: #fff;
+    border-top-color: rgba(255,255,255,.7);
+}
+
+.at-header-menu-more {
+   display: none;
+    position: absolute;
+    left: 0;
+    min-width: 100%;
+    line-height: 36px;
+    margin: 0;
+    box-shadow: -0.6px 1.9px 9.8px 0.2px rgba(0,0,0,.3);
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+    z-index: 999;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.at-header-menu .at-header-menu-more li{
+    padding: 0 20px;
+    text-align: center;
+}
+
+.at-header-menu .at-header-menu-more li a {
+    color: inherit;
+    line-height: 30px;
+}
+
+.at-header-menu-selected {
+    color: white !important;
+    border-bottom: 3px solid yellow !important;
+}
+
+.at-header-menu-more-select {
+    background-color: white;
+    color: #2f2f2f;
+}
+
+.at-header-menu-more-selected {
+    color: white;
+    background-color: grey;
+}
+
+.at-header-menu:hover,.at-header-menu-end:hover {
+    color: white !important;
+    border-bottom: 3px solid yellow !important;
+}
+
+.at-header-menu .at-header-menu-more li:hover {
+    color: white;
+    background-color: #5FB878;
+}
+
+/* 主体部分 */
+.at-main {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.at-index-side-menu {
+    display: block;
+    position: absolute;
+    float: left;
+    width: 250px;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background-color: #cccccc;
+    overflow: auto;
+
+}
+
+.at-index-main {
+    position: absolute;
+    padding: 10px;
+    margin: 0;
+    left: 250px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    color: black;
+    overflow: auto;
+    border-left: 3px solid #E9967A;
+}
+
+.at-index-caseinfos {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #ffffcc;
+    border: 1px solid #0066cc;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.at-index-caseinfo {
+    position: relative;
+    float: left;
+    top: 6px;
+    bottom: 7px;
+    font-size: 10px;
+    padding: 0 20px;
+}
+
+
+.at-index-casecontent {
+    position: absolute;
+    width: 100%;
+    color: black;
+    top: 50px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+}
+
+.at-index-casedetails {
+    position: relative;
+    height: 50%;
+    border: 1px solid #336699;
+    overflow: hidden;
+    background-color: #ffffcc;
+}
+
+.at-index-casedetail {
+    position: relative;
+    float: left;
+    width: 23%;
+    height: 100%;
+    border-right: 1px solid #336699;
+}
+
+.at-index-casedetail-header {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid #336699;
+}
+
+.at-index-casedetail-content,.at-index-casedesc-content {
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    bottom: 0;
+}
+
+.at-index-caseisauto {
+    position: relative;
+    float: left;
+    width: 8%;
+    height: 100%;
+}
+
+.at-index-casetools {
+    position: relative;
+    margin-top: 10px;
+    padding-left: 20px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid #336699;
+    overflow: hidden;
+    background-color: #ffffcc;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+.at-index-casetool {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    line-height: 24px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: 3px solid #ffffcc;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.at-index-casetool:hover {
+    opacity: 0.8; filter:alpha(opacity=80); color: #fff;
+}
+
+.at-index-casetool:active {
+    opacity: 1; filter:alpha(opacity=100);
+}
+
+
+.at-index-casedescs {
+    margin-top: 10px;
+    position: relative;
+    height: 40%;
+    border: 1px solid #336699;
+    overflow: hidden;
+    background-color: #ffffcc;
+}
+
+.at-index-casedesc {
+    position: relative;
+    float: left;
+    width: 33%;
+    height: 100%;
+    border-right: 1px solid #336699;
+}
+
+.at-index-casebug {
+    position: relative;
+    float: left;
+    width: 34%;
+    height: 100%;
+}
+
+.at-index-casedesc-header {
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #336699;
+}
+
+.at-index-casedesc-content {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+.at-index-casedesc-content table {
+    position: absolute;
+    padding: 5px;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
+.at-index-casedesc-content tr,td {
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid grey;
+}
+
+#editorpre, #editorstep, #editorexp, #editorreal, #editordesc, #editorlog {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.at-login-form {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    text-align:center;
+    margin: auto;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
