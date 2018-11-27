@@ -4,11 +4,10 @@ layui.use(['jquery', 'layer'], function () {
     var sideDisplay = "0"
     initAceEditor();
 
-
     // 监听 顶部右方导航按钮事件
-    $(".header-right").on("click", function(event) {
+    $(".at-header-menu").on("click", function(event) {
         topMenuClose();
-        if ( $("#"+ this.id +" .header-more").css("border-top-style") != "none" ) {
+        if ( $("#"+ this.id +" .at-header-menu-icon").css("border-top-style") != "none" ) {
             topMenuOpen(this.id);
             return false;
         } else {
@@ -19,14 +18,14 @@ layui.use(['jquery', 'layer'], function () {
     });
 
     // 监听 顶部导航menu按钮
-    $(".header-right .menu-more li").on("click", function(event) {
+    $(".at-header-menu .at-header-menu-more li").on("click", function(event) {
         topMenuClose();
 
         // 切换"版本" or 切换"模式"
-        if ( this.parentNode.parentNode.id === "header-right-version" ) {
+        if ( this.parentNode.parentNode.id === "header-menu-version" ) {
             var title = "版本："
             layer.msg("switch version");
-        } else if ( this.parentNode.parentNode.id === "header-right-tmode" ) {
+        } else if ( this.parentNode.parentNode.id === "header-menu-tmode" ) {
             var title = "模式："
             layer.msg("switch mode");
         } else {
@@ -41,27 +40,12 @@ layui.use(['jquery', 'layer'], function () {
         var node = this.parentNode.firstChild;
         for ( ; node; node = node.nextSibling ) {
             if ( node.nodeType === 1 ) {
-                node.className = "select";
+                node.className = "at-header-menu-more-select";
             };
         };
-        this.className = "selected";
+        this.className = "at-header-menu-more-selected";
         return false;
     });
-
-
-//    $(".detaildiv").on("dblclick", function(event){
-//        if ( editor === null ) {
-//            editor = ace.edit(this.firstChild.nextSibling.id);
-//        } else {
-//            layer.alert(editor.getValue());
-//        };
-//    });
-//    var editor = ace.edit('editorpre');
-//    editor.session.setMode("ace/mode/text");
-//    editor.setTheme("ace/theme/tomorrow");
-//    editor.setFontSize(10);
-//    editor.setOption("wrap", "free");
-//    editor.setReadOnly(true);
 
     // 关闭menu
     $(document).on("click", function(event){
@@ -70,25 +54,25 @@ layui.use(['jquery', 'layer'], function () {
     });
 
     function topMenuOpen(id) {
-        $("#" + id + " .header-more").css("margin-top","-3px");
-        $("#" + id + " .header-more").css("border-top-style","none");
-        $("#" + id + " .header-more").css("border-bottom-style","solid");
-        $("#" + id + " .header-more").css("border-bottom-color","rgba(255,255,255,.7)");
-        $("#" + id + " .menu-more").css("display","block");
-        $("#" + id + " .menu-more").css("background-color","rgba(0,0,0,.3)");
+        $("#" + id + " .at-header-menu-icon").css("margin-top","-3px");
+        $("#" + id + " .at-header-menu-icon").css("border-top-style","none");
+        $("#" + id + " .at-header-menu-icon").css("border-bottom-style","solid");
+        $("#" + id + " .at-header-menu-icon").css("border-bottom-color","rgba(255,255,255,.7)");
+        $("#" + id + " .at-header-menu-more").css("display","block");
+        $("#" + id + " .at-header-menu-more").css("background-color","rgba(0,0,0,.3)");
         $("#" + id).css("border-bottom","3px solid yellow");
         $("#" + id).css("color","white");
     };
 
     function topMenuClose() {
-        $(".header-more").css("margin-top","-3px");
-        $(".header-more").css("border-top-style","solid");
-        $(".header-more").css("border-bottom-style","none");
-        $(".header-more").css("border-top-color","rgba(255,255,255,.7)");
-        $(".menu-more").css("display","none");
-        $(".menu-more").css("background-color","rgba(0,0,0,.3)");
-        $(".header-right").css("border-bottom","none");
-        $(".header-right").css("color","rgba(255,255,255,.7)");
+        $(".at-header-menu-icon").css("margin-top","-3px");
+        $(".at-header-menu-icon").css("border-top-style","solid");
+        $(".at-header-menu-icon").css("border-bottom-style","none");
+        $(".at-header-menu-icon").css("border-top-color","rgba(255,255,255,.7)");
+        $(".at-header-menu-more").css("display","none");
+        $(".at-header-menu-more").css("background-color","rgba(0,0,0,.3)");
+        $(".at-header-menu").css("border-bottom","none");
+        $(".at-header-menu").css("color","rgba(255,255,255,.7)");
     };
 
     // 初始化editor,并添加监听事件
