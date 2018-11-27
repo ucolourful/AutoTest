@@ -5,54 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>AutoTest</title>
-    <link href="../static/css/common.css" rel="stylesheet">
-    <link href="../static/css/header.css" rel="stylesheet"/>
-    <link href="../static/css/main.css" rel="stylesheet">
+    <link href="../static/css/autotest.css" rel="stylesheet"/>
     <link href="../static/css/tree.css" rel="stylesheet"/>
 </head>
 <body oncontextmenu="return false;">
 
 <!-- 顶部导航栏 -->
-<div class="header-class">
-    <div class="header-container">
-        <div class="header-logo">
-            <a href="#">AutoTest测试平台</a>
-        </div>
-        <div class="header-help">
-            <a href="#">帮助</a>
-        </div>
-        <div class="header-right" id="header-right-user">
-            <a>李明</a>
-            <span class="header-more"></span>
-            <ul class="menu-more">
-                <li class="select"><a href="#">系统设置</a></li>
-                <li class="select"><a href="#">退出登录</a></li>
-            </ul>
-        </div>
-        <div class="header-right" id="header-right-tmode">
-            <a href="#">模式：用例设计</a>
-            <span class="header-more"></span>
-            <ul class="menu-more">
-                <li class="selected" id="用例设计"><a href="#">用例设计</a></li>
-                <li class="select" id="自动化案例编写"><a href="#">自动化案例编写</a></li>
-                <li class="select" id="自动化构建"><a href="#">自动化构建</a></li>
-            </ul>
-        </div>
-        <div class="header-right" id="header-right-version">
-            <a href="#">版本：测试版本1</a>
-            <span class="header-more"></span>
-            <ul class="menu-more">
-                <li class="selected" id="测试版本1"><a href="#">测试版本1</a></li>
-                <li class="select" id="测试版本2"><a href="#">测试版本2</a></li>
-                <li class="select" id="测试版本3"><a href="#">开发版本3</a></li>
-            </ul>
-        </div>
+<div class="at-header">
+    <div class="at-header-logo">
+        <a href="#">AutoTest测试平台</a>
+    </div>
+    <div class="at-header-menu-end">
+        <a href="#">帮助</a>
+    </div>
+    <div class="at-header-menu" id="header-menu-user">
+        <a href="#">李明</a>
+        <span class="at-header-menu-icon"></span>
+        <ul class="at-header-menu-more">
+            <li class="at-header-menu-more-select"><a href="#">系统设置</a></li>
+            <li class="at-header-menu-more-select"><a href="#">退出登录</a></li>
+        </ul>
+    </div>
+    <div class="at-header-menu" id="header-menu-tmode">
+        <a href="#">模式：用例设计</a>
+        <span class="at-header-menu-icon"></span>
+        <ul class="at-header-menu-more">
+            <li class="at-header-menu-more-selected" id="用例设计"><a href="#">用例设计</a></li>
+            <li class="at-header-menu-more-select" id="自动化案例编写"><a href="#">自动化案例编写</a></li>
+            <li class="at-header-menu-more-select" id="自动化构建"><a href="#">自动化构建</a></li>
+        </ul>
+    </div>
+    <div class="at-header-menu" id="header-menu-version">
+        <a href="#">版本：测试版本1</a>
+        <span class="at-header-menu-icon"></span>
+        <ul class="at-header-menu-more">
+            <li class="at-header-menu-more-selected" id="测试版本1"><a href="#">测试版本1</a></li>
+            <li class="at-header-menu-more-select" id="测试版本2"><a href="#">测试版本2</a></li>
+            <li class="at-header-menu-more-select" id="测试版本3"><a href="#">开发版本3</a></li>
+        </ul>
     </div>
 </div>
 
-<div class="main-class">
+<div class="at-main">
     <!-- 侧边导航栏 -->
-    <div class="side-menu">
+    <div class="at-index-side-menu">
         <div class="tree">
             <ul>
                 <!--一级菜单栏-->
@@ -180,79 +176,71 @@
     </div>
 
     <!-- 内容 -->
-    <div class="main-container">
+    <div class="at-index-main">
         <!-- 用例信息 -->
-        <div class="container-toolbar">
-            <div class="container-toolbar-left">
-                <div class="toolbar-left-div">Case ID: <b style="font-size: 14px;">000001</b></div>
-                <div class="toolbar-left-div">用例名称: <b style="font-size: 14px;">测试用例1</b></div>
-                <div class="toolbar-left-div">用例作者: <b style="font-size: 14px;">测试人员01</b></div>
-            </div>
+        <div class="at-index-caseinfos">
+            <div class="at-index-caseinfo">Case ID: <b style="font-size: 14px;">000001</b></div>
+            <div class="at-index-caseinfo">用例名称: <b style="font-size: 14px;">测试用例1</b></div>
+            <div class="at-index-caseinfo">用例作者: <b style="font-size: 14px;">测试人员01</b></div>
         </div>
 
         <!-- 用例内容 -->
-        <div class="container-content">
+        <div class="at-index-casecontent">
             <!-- 用例详情 -->
-            <div class="content-detail">
-                <div class="casedetail">
-                    <div class="detailheader">前置条件</div>
-                    <div class="detaildiv" id="editorprediv">
+            <div class="at-index-casedetails">
+                <div class="at-index-casedetail">
+                    <div class="at-index-casedetail-header">前置条件</div>
+                    <div class="at-index-casedetail-content" id="editorprediv">
                         <pre id="editorpre"></pre>
                     </div>
                 </div>
-                <div class="casedetail">
-                    <div class="detailheader">测试步骤</div>
-                    <div class="detaildiv" id="editorstepdiv">
+                <div class="at-index-casedetail">
+                    <div class="at-index-casedetail-header">测试步骤</div>
+                    <div class="at-index-casedetail-content" id="editorstepdiv">
                         <pre id="editorstep"></pre>
                     </div>
                 </div>
-                <div class="casedetail">
-                    <div class="detailheader">期望结果</div>
-                    <div class="detaildiv" id="editorexpdiv">
+                <div class="at-index-casedetail">
+                    <div class="at-index-casedetail-header">期望结果</div>
+                    <div class="at-index-casedetail-content" id="editorexpdiv">
                         <pre id="editorexp"></pre>
                     </div>
                 </div>
-                <div class="casedetail">
-                    <div class="detailheader">实际结果</div>
-                    <div class="detaildiv" id="editorrealdiv">
+                <div class="at-index-casedetail">
+                    <div class="at-index-casedetail-header">实际结果</div>
+                    <div class="at-index-casedetail-content" id="editorrealdiv">
                         <pre id="editorreal"></pre>
                     </div>
                 </div>
-                <div class="isauto">
-                    <div class="detailheader">是否自动化</div>
+                <div class="at-index-caseisauto">
+                    <div class="at-index-casedetail-header">是否自动化</div>
                 </div>
             </div>
 
             <!-- 用例操作 -->
-            <div class="content-toolbar">
-                <div class="container-toolbar-left">
-                    <div class="toolbar-left-div">
-                        <div class="toolbar-btn-group">
-                            <button class="toolbar-btn">保存</button>
-                            <button class="toolbar-btn">重置</button>
-                            <button class="toolbar-btn">删除</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="at-index-casetools">
+                <button class="at-index-casetool">保存</button>
+                <button class="at-index-casetool">重置</button>
+                <button class="at-index-casetool">删除</button>
             </div>
 
             <!-- 用例备注 -->
-            <div class="content-desc">
-                <div class="casedesc">
-                    <div class="descheader">用例备注</div>
-                    <div class="detaildiv" id="editordescdiv">
+            <div class="at-index-casedescs">
+                <div class="at-index-casedesc">
+                    <div class="at-index-casedesc-header">用例备注</div>
+                    <div class="at-index-casedesc-content" id="editordescdiv">
                         <pre id="editordesc"></pre>
                     </div>
                 </div>
-                <div class="casedesc">
-                    <div class="descheader">测试日志(填写在实际结果，记录到测试日志)</div>
-                    <div class="detaildiv" id="editorlogdiv">
+                <div class="at-index-casedesc">
+                    <div class="at-index-casedesc-header">测试日志(填写在实际结果，记录到测试日志)</div>
+                    <div class="at-index-casedesc-content" id="editorlogdiv">
                         <pre id="editorlog"></pre>
                     </div>
                 </div>
-                <div class="bugrecord">
-                    <div class="descheader">关联问题单</div>
-                    <div class="bugnumdiv" id="bugnumdiv">
+                <div class="at-index-casebug">
+                    <div class="at-index-casedesc-header">关联问题单</div>
+                    <div class="at-index-casedesc-content" id="bugnumdiv">
                         <table>
                             <tr>
                                 <td>bug单号</td>
