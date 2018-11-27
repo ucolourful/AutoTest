@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
 <!-- 导航栏 -->
 <div class="at-header">
     <div class="at-header-logo">
@@ -35,56 +36,31 @@
     <!-- 登录表单 -->
     <form class="at-login-form" lay-filter="regist">
         <div class="at-login-form-item">
-            <div class="at-login-form-item-half">liming</div>
-            <div class="at-login-form-item-half">liming2</div>
+            <div class="at-login-form-item-left">
+                <lable>用户名</lable>
+            </div>
+            <div class="at-login-form-item-right">
+                <input type="text" placeholder="请输入用户名"/>
+            </div>
         </div>
-        <div class="at-login-form-item">liming3</div>
-        <div class="at-login-form-item">liming4</div>
-        <!--<div class="at-login-top-half">-->
-            <!--<div class="at-login-left-half">-->
-                <!--<div class=""></div>-->
-            <!--</div>-->
-            <!--<div class="at-login-right-half">liming2</div>-->
-        <!--</div>-->
-        <!--<div class="at-login-bottom-half">-->
-            <!--<div class="at-login-left-half">liming3</div>-->
-            <!--<div class="at-login-right-half">liming4</div>-->
-        <!--</div>-->
+        <div class="at-login-form-item">
+            <div class="at-login-form-item-left">
+                <lable>密　码</lable>
+            </div>
+            <div class="at-login-form-item-right">
+                <input type="password" placeholder="请输入密码"/>
+            </div>
+        </div>
+        <div class="at-login-form-item">
+            <div class="at-login-form-item-left">
+                <input type="button" value="登陆">
+            </div>
+            <div class="at-login-form-item-right">
+                <input type="button" value="注册">
+            </div>
+        </div>
     </form>
 </div>
-
-<!-- 注册表单 -->
-<!--<div class="layui-body">-->
-<!--<br><br>-->
-<!--<form class="layui-form layui-form-pane1" lay-filter="regist">-->
-
-<!--<div class="layui-form-item">-->
-<!--<label class="layui-form-label">用户名</label>-->
-<!--<div class="layui-input-block">-->
-<!--<input type="text" name="username" lay-verify="required|title" placeholder="请输入用户名"-->
-<!--autocomplete="off" class="layui-input">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="layui-form-item">-->
-<!--<label class="layui-form-label">密码</label>-->
-<!--<div class="layui-input-block">-->
-<!--<input type="password" name="password" id="password" lay-verify="required|pass" placeholder="请输入密码"-->
-<!--autocomplete="off" class="layui-input">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="layui-form-item">-->
-<!--<div class="layui-input-block">-->
-<!--<button class="layui-btn" lay-submit lay-filter="*">登录</button>-->
-<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-
-
 <script src="../static/src/layui.js"></script>
 <script src="../static/js/atLogin.js"></script>
 </body>
