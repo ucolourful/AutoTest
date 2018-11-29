@@ -19,5 +19,9 @@ from AutoTest import viewIndex, viewLogin
 
 urlpatterns = [
     url(r"^$", viewLogin.login),
-    url(r"^testDO", viewIndex.testDO),
+    url(r"^login", viewLogin.login),
+    url(r"^doLogin", viewLogin.doLogin),
+    url(r"^index", viewIndex.index),
+    url(r"^saveUserSetting", viewIndex.saveUserSetting),
+    url(r"^getAllTestCase", viewIndex.getAllTestCase),
 ]
