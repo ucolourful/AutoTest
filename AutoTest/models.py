@@ -14,14 +14,24 @@ class UserTable(models.Model):
     # 邮箱地址
     emailAddr = models.CharField(max_length=30)
 
+
+class UserOptTable(models.Model):
+    """
+    用户默认行为表
+    """
+    userName = models.CharField(max_length=30)
     # 首页默认版本号
-    defVersion = models.IntegerField()
+    dftVerName = models.CharField(max_length=300)
+    dftVerId = models.IntegerField()
 
     # 首页默认模式号
-    defTmode = models.IntegerField()
+    dftTmodeName = models.CharField(max_length=300)
+    dftTmodeId = models.IntegerField()
 
     # 首页默认用例号
-    defCaseOn = models.IntegerField()
+    dftCaseName = models.CharField(max_length=300)
+    dftCaseId = models.IntegerField()
+    dftCasePId = models.IntegerField()
 
 
 class VersionTable(models.Model):
@@ -42,13 +52,11 @@ class CaseTable(models.Model):
     """
     测试用例数据表
     """
-    caseName = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     # 用例作者名
     caseAName = models.CharField(max_length=30)
-    # 用例还是用例套;true为用例，false为用例套
-    isDir = models.BooleanField()
     # 父节点id
-    caseParentID = models.IntegerField()
+    pId = models.IntegerField()
     # 前置条件
     casePreCond = models.CharField(max_length=300)
     # 测试步骤
@@ -62,4 +70,3 @@ class CaseTable(models.Model):
     # 测试日志(需要做日志轮转)
     caseTestLog = models.CharField(max_length=300)
     # 关联问题单(单号查询，待开发提单系统)
-
