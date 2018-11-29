@@ -3,6 +3,7 @@ layui.use(['jquery', 'layer'], function () {
     var $ = layui.jquery;
     var sideDisplay = "0"
     initAceEditor();
+    createTree();
 
     // 监听 顶部右方导航按钮事件
     $(".at-header-menu").on("click", function(event) {
@@ -20,21 +21,32 @@ layui.use(['jquery', 'layer'], function () {
     // 监听 顶部导航menu按钮
     $(".at-header-menu .at-header-menu-more li").on("click", function(event) {
         topMenuClose();
+        var datas = {};
 
         // 切换"版本" or 切换"模式"
         if ( this.parentNode.parentNode.id === "header-menu-version" ) {
-            var title = "版本："
-            layer.msg("switch version");
+            var title = "版本：";
+            datas["versionName"] = this.firstChild.innerText;
+            datas["versionId"] = $(this).attr("data-value");
         } else if ( this.parentNode.parentNode.id === "header-menu-tmode" ) {
-            var title = "模式："
-            layer.msg("switch mode");
+            var title = "模式：";
+            datas["tmodeName"] = this.firstChild.innerText;
+            datas["tmodeId"] = $(this).attr("data-value");
         } else {
             layer.msg("user operation");
             return false;
         };
 
         // 设置header显示
-        this.parentNode.parentNode.firstChild.nextSibling.innerText = title + this.id;
+        this.parentNode.parentNode.firstChild.nextSibling.innerText = title + this.firstChild.innerText;
+
+        $.ajax({
+            type: "POST",
+            url: "/saveUserSetting",
+            data: datas
+        }).done(function(res){
+            console.log("versionName or tmodeName："+res.msg)
+        });
 
         // 设置下拉框的选中属性
         var node = this.parentNode.firstChild;
@@ -53,6 +65,7 @@ layui.use(['jquery', 'layer'], function () {
         return false;
     });
 
+    // 打开顶部按钮菜单
     function topMenuOpen(id) {
         $("#" + id + " .at-header-menu-icon").css("margin-top","-3px");
         $("#" + id + " .at-header-menu-icon").css("border-top-style","none");
@@ -64,6 +77,7 @@ layui.use(['jquery', 'layer'], function () {
         $("#" + id).css("color","white");
     };
 
+    // 关闭顶部按钮菜单
     function topMenuClose() {
         $(".at-header-menu-icon").css("margin-top","-3px");
         $(".at-header-menu-icon").css("border-top-style","solid");
@@ -149,17 +163,62 @@ layui.use(['jquery', 'layer'], function () {
         });
     };
 
-//    $("#test").on("mousedown", function (event) {
-//        layer.alert(event.button);
-//    });
+    // ztree 单击事件监听. 若为叶子节点，触发ajax行为，记录当前节点
+    function onClick(e, treeId, treeNode) {
+        if (treeNode.isParent)
+            return false;
+        $.ajax({
+            type: "POST",
+            url: "saveUserSetting",
+            data: { caseName: treeNode.name, caseId: treeNode.id , casePId: treeNode.pId }
+        }).done(function(res){
+            console.log("caseName："+res.msg);
+        });
+        return false;
+    };
 
-//    $("#test").on("click",function() {
-//        $.ajax({
-//            type: "POST",
-//            url: "/testDO",
-//            data: { param: editor.getValue() }
-//        }).done(function(ret){
-//            console.log(ret.msg);
-//        });
-//    });
+    // ztree 右键单击事件监听
+    function onRightClick() {
+        layer.alert("右键单击");
+        return false;
+    };
+
+    function createTree() {
+        // ztree初始化
+        var ztreeSetting = {
+            check: { enable: false },
+            data: {
+                // 简单数据模式
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pId"
+                }
+            },
+            callback: {
+                onClick: onClick,
+                onRightClick: onRightClick
+            }
+        };
+        $.ajax({
+            type: "GET",
+            url: "/getAllTestCase",
+            success: function (res) {
+                $("#dataModelCatalog").empty();
+                $.fn.zTree.init($("#dataModelCatalog"), ztreeSetting, res.msg);
+                var treeObj = $.fn.zTree.getZTreeObj("dataModelCatalog");
+                var node = treeObj.getNodeByParam("id",$("#userDftCaseId").val());
+//                openTheNode(node, treeObj);
+            }
+        });
+    };
+
+//    function openTheNode(node, treeObj){
+//        if( node.pId == 0 ){
+//            var pNode = treeObj.getNodeByParam("id",node.id);
+//            treeObj.expandNode(pNode, true, false, true);
+//        }else{
+//            openTheNode(treeObj.getNodeByParam("id", node.pId));
+//        };
+//    };
 });
