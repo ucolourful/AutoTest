@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>AutoTest</title>
     <link href="../static/css/autotest.css" rel="stylesheet"/>
-    <link href="../static/css/tree.css" rel="stylesheet"/>
+    <link href="../static/css/zTreeStyle.css" rel="stylesheet"/>
 </head>
 <body oncontextmenu="return false;">
 
@@ -19,7 +19,8 @@
         <a href="#">帮助</a>
     </div>
     <div class="at-header-menu" id="header-menu-user">
-        <a href="#">李明</a>
+        <a href="#">{{request.session.username}}</a>
+        <input type="text" value="{{userOpt.dftCaseId}}" id="userDftCaseId" hidden>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
             <li class="at-header-menu-more-select"><a href="#">系统设置</a></li>
@@ -27,21 +28,31 @@
         </ul>
     </div>
     <div class="at-header-menu" id="header-menu-tmode">
-        <a href="#">模式：用例设计</a>
+        <a href="#">模式：{{userOpt.dftTmodeName}}</a>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
-            <li class="at-header-menu-more-selected" id="用例设计"><a href="#">用例设计</a></li>
-            <li class="at-header-menu-more-select" id="自动化案例编写"><a href="#">自动化案例编写</a></li>
-            <li class="at-header-menu-more-select" id="自动化构建"><a href="#">自动化构建</a></li>
+            {% for tmode in tmodeList %}
+            {% if userOpt.dftTmodeId == tmode.id %}
+            <li class="at-header-menu-more-selected" data-value="{{tmode.id}}"><a>{{tmode.tmodeName}}</a></li>
+            {% else %}
+            <li class="at-header-menu-more-select" data-value="{{tmode.id}}"><a>{{tmode.tmodeName}}</a></li>
+            {% endif %}
+            {% endfor %}
         </ul>
     </div>
     <div class="at-header-menu" id="header-menu-version">
-        <a href="#">版本：测试版本1</a>
+        <a href="#">版本：{{userOpt.dftVerName}}</a>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
-            <li class="at-header-menu-more-selected" id="测试版本1"><a href="#">测试版本1</a></li>
-            <li class="at-header-menu-more-select" id="测试版本2"><a href="#">测试版本2</a></li>
-            <li class="at-header-menu-more-select" id="测试版本3"><a href="#">开发版本3</a></li>
+            {% for version in versinList %}
+            {% if userOpt.dftVerId == version.id %}
+            <li class="at-header-menu-more-selected" data-value="{{version.id}}"><a>{{version.versionName}}</a>
+            </li>
+            {% else %}
+            <li class="at-header-menu-more-select" data-value="{{version.id}}"><a>{{version.versionName}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
         </ul>
     </div>
 </div>
@@ -49,130 +60,7 @@
 <div class="at-main">
     <!-- 侧边导航栏 -->
     <div class="at-index-side-menu">
-        <div class="tree">
-            <ul>
-                <!--一级菜单栏-->
-                <li>
-                    <div class="close_menu"><span></span><a title="一级菜单">一级菜单</a></div>
-                    <ul>
-                        <li>
-                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                            <ul>
-                                <li><a title="最后一层" id="test">最后一层</a></li>
-                                <li><a title="最后一层" class="ontree">最后一层</a></li>
-                                <li><a title="最后一层">最后一层</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                            <ul>
-                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化最后一层的结构有变化</a></li>
-                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <!--一级菜单栏end-->
-                <!--一级菜单栏-->
-                <li>
-                    <div class="open_menu"><span></span><a title="一级菜单">一级菜单</a></div>
-                    <ul>
-                        <li>
-                            <div class="close_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                            <ul>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="open_menu"><span></span><a title="二级菜单">二级菜单</a></div>
-                            <ul>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="close_menu"><span></span><a title="三级菜单">三级菜单</a></div>
-                                    <ul>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                        <li><a title="最后一层">最后一层的结构有变化最后一层的结构有变化</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <!--一级菜单栏end-->
-            </ul>
-        </div>
+        <ul id="dataModelCatalog" class="ztree"></ul>
     </div>
 
     <!-- 内容 -->
@@ -267,8 +155,9 @@
 </div>
 </body>
 <script src="../static/src/ace.js"></script>
-<script src="../static/src/layui.js"></script>
-<script src="../static/js/atIndex.js"></script>
 <script src="../static/js/jquery.js"></script>
-<script src="../static/js/treescroll.min.js"></script>
+<script src="../static/src/layui.js"></script>
+<script src="../static/js/jquery.ztree.all.js"></script>
+<script src="../static/js/atIndex.js"></script>
+
 </html>
