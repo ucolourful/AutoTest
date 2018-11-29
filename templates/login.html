@@ -34,32 +34,32 @@
 <!-- 主体部分 -->
 <div class="at-main">
     <!-- 登录表单 -->
-    <form class="at-login-form" lay-filter="regist">
+    <div class="at-login-form">
         <div class="at-login-form-item">
             <div class="at-login-form-item-left">
-                <lable>用户名</lable>
+                <lable class="at-form-item-lable">用户名</lable>
             </div>
             <div class="at-login-form-item-right">
-                <input type="text" placeholder="请输入用户名"/>
+                <input class="at-form-item-input" type="text" id="username" autofocus placeholder="请输入用户名"/>
             </div>
         </div>
         <div class="at-login-form-item">
             <div class="at-login-form-item-left">
-                <lable>密　码</lable>
+                <lable class="at-form-item-lable">密　码</lable>
             </div>
             <div class="at-login-form-item-right">
-                <input type="password" placeholder="请输入密码"/>
+                <input class="at-form-item-input" type="password" id="password" placeholder="请输入密码"/>
             </div>
         </div>
         <div class="at-login-form-item">
             <div class="at-login-form-item-left">
-                <input type="button" value="登陆">
             </div>
             <div class="at-login-form-item-right">
-                <input type="button" value="注册">
+                <button class="at-form-item-submit" id="at-form-item-submit">登录</button>
+                <button class="at-form-item-reset" id="at-form-item-reset">重置</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <script src="../static/src/layui.js"></script>
 <script src="../static/js/atLogin.js"></script>
