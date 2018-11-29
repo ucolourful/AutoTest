@@ -1,5 +1,5 @@
 /* 公共部分 */
-html { box-sizing: border-box; margin: 0; height: 100%; }
+html { box-sizing: border-box; margin: 0; height: 100%; width: 100%;}
 *, *::after, *::before { box-sizing: inherit; }
 *, *:before, *:after { box-sizing: border-box; outline: none; }
 body { margin: 0; padding: 0; font-family: 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'STHeiti', 'WenQuanYi Micro Hei', 'SimSun', sans-serif; font-size: 16px; font-smooth: auto; font-weight: 300; line-height: 1.75; color: #444; height: 100%; overflow-x: hidden; }
@@ -87,23 +87,26 @@ body { margin: 0; padding: 0; font-family: 'Microsoft YaHei', 'Lantinghei SC', '
 }
 
 .at-header-menu-more {
-   display: none;
+    display: none;
     position: absolute;
+    padding: 0;
+    margin: 0;
     left: 0;
     min-width: 100%;
     line-height: 36px;
     margin: 0;
-    box-shadow: -0.6px 1.9px 9.8px 0.2px rgba(0,0,0,.3);
     border: 1px solid #d2d2d2;
     background-color: #fff;
     z-index: 999;
     border-radius: 3px;
     white-space: nowrap;
+    list-style:none;
 }
 
 .at-header-menu .at-header-menu-more li{
     padding: 0 20px;
     text-align: center;
+    list-style:none;
 }
 
 .at-header-menu .at-header-menu-more li a {
@@ -352,35 +355,112 @@ body { margin: 0; padding: 0; font-family: 'Microsoft YaHei', 'Lantinghei SC', '
 
 .at-login-form {
     position: absolute;
-    width: 50%;
+    width: 85%;
     height: 50%;
     text-align:center;
     margin: auto;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; left: 0; right: 15%; bottom: 0;
 }
 
 .at-login-form-item {
     position: relative;
     width: 100%;
-    padding: 10px;
+    padding: 20px 0 0 0;
+    height: 75px;
 }
 
 .at-login-form-item-left {
     position: relative;
     float: left;
     width: 50%;
-    height: auto;
+    height: 60px;
     overflow: hidden;
     text-align: right;
-    padding: 20px;
+    padding: 10px;
 }
 
 .at-login-form-item-right{
     position: relative;
     float: left;
     width: 50%;
-    height: auto;
+    height: 60px;
     overflow: hidden;
     text-align: left;
-    padding: 20px;
+    padding: 10px;
+}
+
+.at-form-item-lable {
+    float: right;
+    width: 80px;
+    font-weight: 400;
+    line-height: 38px;
+    text-align: right;
+    color: black;
+}
+
+.at-form-item-input {
+    display: block;
+    height: 38px;
+    width: 300px;
+    line-height: 38px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 3px;
+    border-color: #D2D2D2;
+    padding: 10px;
+}
+
+.at-form-item-input:focus {
+    border-color: grey !important;
+}
+
+.at-form-item-submit {
+    display: inline-block;
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.at-form-item-reset {
+    display: inline-block;
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 15px;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #C9C9C9;
+}
+
+.at-form-item-submit:hover {
+    opacity: 0.8; filter:alpha(opacity=80); color: #fff;
+}
+
+.at-form-item-submit:active {
+    opacity: 1; filter:alpha(opacity=100);
+}
+
+.at-form-item-reset:hover {
+    opacity: 0.8; filter:alpha(opacity=80); border-color: #009688;
+}
+
+.at-form-item-reset:active {
+    opacity: 0.8; filter:alpha(opacity=80); color: #009688;
 }
