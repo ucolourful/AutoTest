@@ -208,17 +208,16 @@ layui.use(['jquery', 'layer'], function () {
                 $.fn.zTree.init($("#dataModelCatalog"), ztreeSetting, res.msg);
                 var treeObj = $.fn.zTree.getZTreeObj("dataModelCatalog");
                 var node = treeObj.getNodeByParam("id",$("#userDftCaseId").val());
-//                openTheNode(node, treeObj);
+                while( node.pId != 0 ) {
+                    console.log(node.pId);
+                    if ( node.pId == 0 ){
+                        break;
+                    };
+                    var pNode = treeObj.getNodeByParam("id",node.pId);
+                    treeObj.expandNode(pNode, true, false, true);
+                    node = treeObj.getNodeByParam("id",pNode.id);
+                };
             }
         });
     };
-
-//    function openTheNode(node, treeObj){
-//        if( node.pId == 0 ){
-//            var pNode = treeObj.getNodeByParam("id",node.id);
-//            treeObj.expandNode(pNode, true, false, true);
-//        }else{
-//            openTheNode(treeObj.getNodeByParam("id", node.pId));
-//        };
-//    };
 });
