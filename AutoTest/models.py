@@ -31,7 +31,6 @@ class UserOptTable(models.Model):
     # 首页默认用例号
     dftCaseName = models.CharField(max_length=300)
     dftCaseId = models.IntegerField()
-    dftCasePId = models.IntegerField()
 
 
 class VersionTable(models.Model):
@@ -55,6 +54,8 @@ class CaseTable(models.Model):
     name = models.CharField(max_length=30)
     # 用例作者名
     caseAName = models.CharField(max_length=30)
+    # 是否为父节点
+    isParent = models.BooleanField()
     # 父节点id
     pId = models.IntegerField()
     # 前置条件

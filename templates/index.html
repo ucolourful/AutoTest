@@ -19,8 +19,8 @@
         <a href="#">帮助</a>
     </div>
     <div class="at-header-menu" id="header-menu-user">
-        <a href="#">{{request.session.username}}</a>
-        <input type="text" value="{{userOpt.dftCaseId}}" id="userDftCaseId" hidden>
+        <a href="#">{{ request.session.username }}</a>
+        <label for="userDftCaseId"><input type="text" value="{{ userOpt.dftCaseId }}" id="userDftCaseId" hidden></label>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
             <li class="at-header-menu-more-select"><a href="#">系统设置</a></li>
@@ -28,30 +28,37 @@
         </ul>
     </div>
     <div class="at-header-menu" id="header-menu-tmode">
-        <a href="#">模式：{{userOpt.dftTmodeName}}</a>
+        <a href="#">模式：{{ userOpt.dftTmodeName }}</a>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
             {% for tmode in tmodeList %}
-            {% if userOpt.dftTmodeId == tmode.id %}
-            <li class="at-header-menu-more-selected" data-value="{{tmode.id}}"><a>{{tmode.tmodeName}}</a></li>
-            {% else %}
-            <li class="at-header-menu-more-select" data-value="{{tmode.id}}"><a>{{tmode.tmodeName}}</a></li>
-            {% endif %}
+                {% if userOpt.dftTmodeId == tmode.id %}
+                    <li class="at-header-menu-more-selected" data-value="{{ tmode.id }}"
+                        value="{{ tmode.tmodeName }}"><a href="">{{ tmode.tmodeName }}</a>
+                    </li>
+                {% else %}
+                    <li class="at-header-menu-more-select" data-value="{{ tmode.id }}"
+                        value="{{ tmode.tmodeName }}"><a href="">{{ tmode.tmodeName }}</a></li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
     <div class="at-header-menu" id="header-menu-version">
-        <a href="#">版本：{{userOpt.dftVerName}}</a>
+        <a href="#">版本：{{ userOpt.dftVerName }}</a>
         <span class="at-header-menu-icon"></span>
         <ul class="at-header-menu-more">
             {% for version in versinList %}
-            {% if userOpt.dftVerId == version.id %}
-            <li class="at-header-menu-more-selected" data-value="{{version.id}}"><a>{{version.versionName}}</a>
-            </li>
-            {% else %}
-            <li class="at-header-menu-more-select" data-value="{{version.id}}"><a>{{version.versionName}}</a>
-            </li>
-            {% endif %}
+                {% if userOpt.dftVerId == version.id %}
+                    <li class="at-header-menu-more-selected" data-value="{{ version.id }}"
+                        value="{{ version.versionName }}">
+                        <a href="">{{ version.versionName }}</a>
+                    </li>
+                {% else %}
+                    <li class="at-header-menu-more-select" data-value="{{ version.id }}"
+                        value="{{ version.versionName }}">
+                        <a href="">{{ version.versionName }}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
