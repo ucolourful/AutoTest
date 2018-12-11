@@ -1,106 +1,7 @@
-------------------------------------------------------------------
-------------------------------------------------------------------
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>IATP</title>
-    <link href="../static/src/css/layui.css" rel="stylesheet"/>
-    <link href="../static/css/iatp.css" rel="stylesheet"/>
-</head>
-<body>
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo"><a href="/home/">IATP测试平台</a></div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <form class="layui-form layui-form-pane1" action="" lay-filter="first">
-            <ul class="layui-nav layui-layout-left">
-                <li class="layui-nav-item-iatp" style="color: #000;">
-                    <label style="margin-right:10px;color: rgba(255,255,255,.7);">产品线</label>
-                    <div class="layui-input-inline" id="product">
-                        <select name="product-search" lay-filter="product-search" lay-search></select>
-                    </div>
-                </li>
-                <li class="layui-nav-item-iatp" style="color: #000; margin-left: 30px;">
-                    <label style="margin-right:10px;color: rgba(255,255,255,.7);">版本</label>
-                    <div class="layui-input-inline" id="version">
-                        <select name="version-search" lay-filter="version-search" lay-search></select>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:">{{ request.session.user }}</a>
-                <dl class="layui-nav-child" id="user-menu">
-                    <dd id="user-info"><a href="javascript:">基本资料</a></dd>
-                    <dd id="user-set"><a href="javascript:">个人设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="/logout/">注销</a></li>
-        </ul>
-    </div>
-
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" id="side-list">
-                <li class="layui-nav-item layui-this" data-value="api"><a href="javascript:">Api 接口测试</a></li>
-                <li class="layui-nav-item" data-value="webui"><a href="javascript:">WebUI 测试</a></li>
-                <li class="layui-nav-item" data-value="device"><a href="javascript:">设备测试</a></li>
-                <li class="layui-nav-item" data-value="bug"><a href="javascript:">Bug管理</a></li>
-                <li class="layui-nav-item" data-value="ci view"><a href="javascript:">构建视图</a></li>
-                <li class="layui-nav-item" data-value="dev self sys"><a href="javascript:">开发自用系统</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="layui-body">
-        <div style="padding: 15px;" id="body-content">
-
-        </div>
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        layui.com - 底部固定区域
-    </div>
-</div>
-</body>
-<script src="../static/src/layui.js"></script>
-<script src="../static/js/iatp-home.js"></script>
-</html>
-------------------------------------------------------------------
-------------------------------------------------------------------
-import json
-
-from django.forms import model_to_dict
-from django.http import HttpResponse
-from django.shortcuts import render
-
-from product.models import Product
-
-
-def get_products(request):
-    # 未登录用户
-    if "user" not in request.session:
-        return HttpResponse(json.dumps({"status": 1, "msg": "login first"}), content_type="application/json")
-
-    # 已登录
-    products = []
-    for product in Product.objects.all():
-        products.append(model_to_dict(product))
-    return HttpResponse(json.dumps({"status": 0, "msg": products}), content_type="application/json")
-
-
-def product_manage(request):
-    return render(request, "product_manage.html")
-
-------------------------------------------------------------------
-------------------------------------------------------------------
 //IATP 首页 JS
 layui.use(['element', 'form', 'jquery', 'layer'], function () {
     let $ = layui.jquery;
+    let element = layui.element;
     let layer = layui.layer;
     let form = layui.form;
     updateSelections();
@@ -116,51 +17,58 @@ layui.use(['element', 'form', 'jquery', 'layer'], function () {
     });
 
     // 侧边导航栏监听
-    $("#side-list li").on("click", function () {
+    $("#testmode-list li").on("click", function () {
         layer.msg($(this).attr("data-value"));
         $("#body-content").html($(this).attr("data-value"));
     });
 
     // 监听选择下拉框
-    form.on('select', function(data){
-        if ( this.parentNode.parentNode.parentNode.id === "product" ) {
-            postdata = { "product_id": data.value }
+    form.on('select', function (data) {
+        let postdata;
+        if (this.parentNode.parentNode.parentNode.id === "product") {
+            postdata = {"product_id": data.value}
         }
-        if ( this.parentNode.parentNode.parentNode.id === "version" ) {
-            postdata = { "version_id": data.value }
+        if (this.parentNode.parentNode.parentNode.id === "version") {
+            postdata = {"version_id": data.value}
         }
         $.ajax({
             type: "POST",
             url: "/userset/",
             data: postdata,
-        }).done(function(res){
-            updateSelections();
+        }).done(function (res) {
+            if (res.status === 0) {
+                updateSelections();
+            }
         })
     });
 
     // 获取产品线&个人设置
     function updateSelections() {
         $("select[name=product-search]").empty();
-        let products = ""
-        let usersetting = ""
+        let products = "";
+        let usersetting = "";
         $.when(
             // 请求获取产品线信息
             $.ajax({
                 type: "GET",
                 url: "/products/",
-            }).done(function (res) {products = res.msg}),
+            }).done(function (res) {
+                products = res.msg
+            }),
             // 请求获取个人设置
             $.ajax({
                 type: "GET",
                 url: "/userset/",
-            }).done(function (res) {usersetting = res.msg})
-        ).done(function(){
+            }).done(function (res) {
+                usersetting = res.msg
+            })
+        ).done(function () {
             // 通过个人设置初始化产品线下拉框
             let optionString = "<option value=\'\'>请搜索产品线</option>";
-            for (var i = 0; i < products.length; i++) {
-                if ( usersetting.product_id == products[i].id ) {
+            for (let i = 0; i < products.length; i++) {
+                if (usersetting.product_id === products[i].id) {
                     optionString += "<option value=\'" + products[i].id + "\' selected=\'selected\'>" + products[i].productname + "</option>";
-                } else{
+                } else {
                     optionString += "<option value=\'" + products[i].id + "\'>" + products[i].productname + "</option>";
                 }
             }
@@ -175,189 +83,51 @@ layui.use(['element', 'form', 'jquery', 'layer'], function () {
 
     function updateVersions(usersetting) {
         $("select[name=version-search]").empty();
-        if ( usersetting.product_id === 0 ) {
-            let optionString = "<option value=\'\'>请先选择产品线</option>";
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "/versions/",
-                data: {"product_id": usersetting.product_id},
-            }).done(function(res){
-                let versions = res.msg;
-                let optionString = "<option value=\'\'>请搜索版本号</option>";
-                for (var i = 0; i < versions.length; i++) {
-                    if ( usersetting.version_id == versions[i].id ) {
-                        optionString += "<option value=\'" + versions[i].id + "\' selected=\'selected\'>" + versions[i].versionname + "</option>";
-                    } else{
-                        optionString += "<option value=\'" + versions[i].id + "\'>" + versions[i].versionname + "</option>";
-                    }
-                }
-                $("select[name=version-search]").append(optionString);
-                form.render();
-            })
+        if (usersetting.product_id === null) {
+            return false;
         }
-    };
+        updateTestMode(usersetting);
+        $.ajax({
+            type: "POST",
+            url: "/versions/",
+            data: {"product_id": usersetting.product_id},
+        }).done(function (res) {
+            let versions = res.msg;
+            let optionString = "<option value=\'\'>请搜索版本号</option>";
+            for (var i = 0; i < versions.length; i++) {
+                if (usersetting.version_id === versions[i].id) {
+                    optionString += "<option value=\'" + versions[i].id + "\' selected=\'selected\'>" + versions[i].versionname + "</option>";
+                } else {
+                    optionString += "<option value=\'" + versions[i].id + "\'>" + versions[i].versionname + "</option>";
+                }
+            }
+            $("select[name=version-search]").append(optionString);
+            form.render();
+        })
+    }
 
+    function updateTestMode(usersetting) {
+        $("#testmode-list").empty();
+        if (usersetting.version_id === null) {
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/versiontestmodes/",
+            data: {"version_id": usersetting.version_id}
+        }).done(function (res) {
+            console.log(res.msg);
+            let versiontestmodes = res.msg;
+            let liString = "";
+            for (var i = 0; i < versiontestmodes.length; i++) {
+                if (usersetting.testmode_id === versiontestmodes[i].id){
+                    liString += "<li class=\'layui-nav-item layui-this\' data-value=\'"+versiontestmodes[i].id+"\'><a href=\'javascript:\'>"+versiontestmodes[i].versiontmname+"</a></li>"
+                }else{
+                    liString += "<li class=\'layui-nav-item\' data-value=\'"+versiontestmodes[i].id+"\'><a href=\'javascript:\'>"+versiontestmodes[i].versiontmname+"</a></li>"
+                }
+            }
+            $("#testmode-list").append(liString);
+            element.render();
+        })
+    }
 });
-------------------------------------------------------------------
-------------------------------------------------------------------
-import json
-
-from django.forms import model_to_dict
-from django.http import HttpResponse
-from django.shortcuts import render
-
-from version.models import Version
-
-
-def get_versions(request):
-    # 未登录用户
-    if "user" not in request.session:
-        return HttpResponse(json.dumps({"status": 1, "msg": "login first"}), content_type="application/json")
-
-    # product_id为必须
-    if "product_id" not in request.POST:
-        return HttpResponse(json.dumps({"status": 1, "msg": "product_id is required"}), content_type="application/json")
-
-    # 获取该product_id下的版本
-    versions = []
-    for version in Version.objects.filter(Product=request.POST["product_id"]):
-        versions.append(model_to_dict(version))
-
-    return HttpResponse(json.dumps({"status": 0, "msg": versions}), content_type="application/json")
-
-
-def version_manage(request):
-    return render(request, "version_manage.html")
-
-------------------------------------------------------------------
-------------------------------------------------------------------
-"""IATP URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
-
-from IATP import views
-from apitest import apiviews
-from product import productviews
-from usersetting import userviews
-from version import versionviews
-
-urlpatterns = [
-    # 默认页、后台页、登陆页、首页、注销登录
-    path('', views.login),
-    path('admin/', admin.site.urls),
-    path('login/', views.login),
-    path('home/', views.home),
-    path('logout/', views.logout),
-
-    # 用户设置接口列表
-    path('userset/', userviews.userset),
-
-    # 产品线&版本管理
-    path('product_manage/', productviews.product_manage),
-    path('version_manage/', versionviews.version_manage),
-    path('products/', productviews.get_products),
-    path('versions/', versionviews.get_versions),
-
-    # api接口测试用例管理
-    path('apitest_manage/', apiviews.apitest_manage),
-    path('apistep_manage/', apiviews.apistep_manage),
-    path('apis_manage/', apiviews.apis_manage),
-]
-------------------------------------------------------------------
-------------------------------------------------------------------
-import json
-
-from django.forms import model_to_dict
-from django.http import HttpResponse
-
-from usersetting.models import UserSetting
-
-
-def userset(request):
-    # 未登录用户
-    if "user" not in request.session:
-        return HttpResponse(json.dumps({"status": 1, "msg": "login first"}), content_type="application/json")
-
-    # 查询用户配置。若查询条目大于1，删除所有条目，新增一条
-    username = request.session["user"]
-    if len(UserSetting.objects.filter(username=username)) != 1:
-        for u in UserSetting.objects.filter(username=username):
-            u.delete()
-        usersetting = UserSetting(username=username, product_id=0, product_name="请选择", version_id=0,
-                                  version_name="请选择")
-        usersetting.save()
-
-    # 查询用户配置。查询条目只有一条，返回这条数据
-    else:
-        usersetting = UserSetting.objects.get(username=username)
-
-    # 若POST中带有数据，则进行保存
-    if "product_id" in request.POST:
-        usersetting.product_id = request.POST["product_id"]
-    elif "version_id" in request.POST:
-        usersetting.version_id = request.POST["version_id"]
-    usersetting.save()
-    return HttpResponse(json.dumps({"status": 0, "msg": model_to_dict(usersetting)}), content_type="application/json")
-------------------------------------------------------------------
-------------------------------------------------------------------
-from django.contrib import auth
-from django.shortcuts import render, redirect
-
-from usersetting.models import UserSetting
-
-
-# 登录页
-def login(request):
-    # 已登录,进入主页
-    if "user" in request.session:
-        return redirect('/home/')
-
-    # POST中不存在'username' or 'password',返回login页面
-    if ("username" or "password") not in request.POST:
-        return render(request, "login.html")
-
-    # POST中同时存在'username' and 'password',验证用户
-    else:
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = auth.authenticate(username=username, password=password)
-
-        # 用户验证成功 -> 返回Json，登录成功
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            request.session['user'] = username
-            return redirect('/home/')
-
-        # 用户验证失败 -> 返回Json，登录失败
-        return render(request, "login.html", {'error': "用户名或密码错误"})
-
-
-# 主页
-def home(request):
-    # 未登录，重定向到登录页
-    if "user" not in request.session:
-        return redirect('/login/')
-    return render(request, "home.html")
-
-
-# 注销
-def logout(request):
-    auth.logout(request)
-    return redirect('/login/')
-------------------------------------------------------------------
-------------------------------------------------------------------
